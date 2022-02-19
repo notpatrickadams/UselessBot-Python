@@ -1,0 +1,6 @@
+*.log
+__pycache__/
+.env
+
+*firebase*.json
+url.txt
