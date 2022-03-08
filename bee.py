@@ -33,5 +33,4 @@ def generate_random():
             a.append(item)
 
     img.putdata(a)
-    img.save(filename)
-    return filename
+    return img
