@@ -1,6 +1,7 @@
 *.log
 __pycache__/
-.env
+.env*
 
 *firebase*.json
 url.txt
+temp.png
