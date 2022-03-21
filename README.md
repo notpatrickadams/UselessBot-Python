@@ -5,7 +5,7 @@ A useless Discord bot that generates pictures of bees!
 ## Installing & Running
 
 ```bash
-pip3 install -r requirements.txt && python3 app.py
+pip3 install -r requirements.txt && python3 main.py
 ```
 
 There will be a log at `bot.log`
