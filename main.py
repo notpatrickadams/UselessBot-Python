@@ -10,6 +10,7 @@ logging.basicConfig(filename="bot.log", format="%(asctime)s - %(message)s", leve
 
 @client.event
 async def on_ready():
+    print("[i] Bot started!")
     logging.info(f"Logged in as {client.user}")
 
 @client.event
