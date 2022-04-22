@@ -50,7 +50,7 @@ async def on_message(message):
             "Indecisive",
             "I can't think right now, can you give me a minute?",
             "Magic 8 ball can you help me with this one?",
-            " "
+            "*screeching noises*"
         ]
         await message.channel.send(possible_replies[randint(0, len(possible_replies))])
 
