@@ -20,6 +20,8 @@ There will be a log at `bot.log`
 - The mention of the word "lamp"
   - Sends an image of a moth
     - Because moths love light sources
+- !magic7
+  - Gives not very good or inconclusive advice
 
 ## To-Do
 
