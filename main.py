@@ -4,6 +4,7 @@ from random import randint
 
 from functions.bee import generate_random
 from functions.pokemon import get_pokemon
+from functions.magic7 import magic7
 
 client = discord.Client()
 load_dotenv()
@@ -38,21 +39,8 @@ async def on_message(message):
         logging.info(f"Pokemon: {pkmn['name']} #{pkmn['dex_no']} sent")
     elif message.content.startswith("!magic7"):
         logging.info(f"Providing life advice to { message.author.mention }")
-        possible_replies = [
-            "Uhhhh...",
-            "...",
-            "Ye",
-            "¯\_(ツ)_/¯",
-            "🤷",
-            "🏀",
-            "I dunno",
-            "Errrr",
-            "Indecisive",
-            "I can't think right now, can you give me a minute?",
-            "Magic 8 ball can you help me with this one?",
-            "*screeching noises*"
-        ]
-        await message.channel.send(possible_replies[randint(0, len(possible_replies))])
+        
+        await message.channel.send(magic7())
 
 
 client.run(os.getenv("DISCORD_TOKEN"))
