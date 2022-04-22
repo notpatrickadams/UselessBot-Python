@@ -1,5 +1,6 @@
 import discord, os, logging
 from dotenv import load_dotenv
+from random import randint
 
 from functions.bee import generate_random
 from functions.pokemon import get_pokemon
@@ -35,6 +36,23 @@ async def on_message(message):
         emb.add_field(name="Types", value=", ".join(pkmn["types"]), inline=False)
         await message.channel.send(embed=emb)
         logging.info(f"Pokemon: {pkmn['name']} #{pkmn['dex_no']} sent")
+    elif message.content.startswith("!magic7"):
+        logging.info(f"Providing life advice to { message.author.mention }")
+        possible_replies = [
+            "Uhhhh...",
+            "...",
+            "Ye",
+            "¯\_(ツ)_/¯",
+            "🤷",
+            "🏀",
+            "I dunno",
+            "Errrr",
+            "Indecisive",
+            "I can't think right now, can you give me a minute?",
+            "Magic 8 ball can you help me with this one?",
+            " "
+        ]
+        await message.channel.send(possible_replies[0, len(possible_replies)])
 
 
 client.run(os.getenv("DISCORD_TOKEN"))
