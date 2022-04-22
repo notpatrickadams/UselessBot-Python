@@ -52,7 +52,7 @@ async def on_message(message):
             "Magic 8 ball can you help me with this one?",
             " "
         ]
-        await message.channel.send(possible_replies[0, len(possible_replies)])
+        await message.channel.send(possible_replies[randint(0, len(possible_replies))])
 
 
 client.run(os.getenv("DISCORD_TOKEN"))
