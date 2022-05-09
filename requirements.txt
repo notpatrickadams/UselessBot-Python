@@ -2,4 +2,4 @@ discord.py
 Pillow
 python-dotenv
 requests
-discord-py-interactions
+discord-py-slash-command

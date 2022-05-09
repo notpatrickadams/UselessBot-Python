@@ -1,11 +1,11 @@
 from random import randint
 
-def magic7():
+def magic7_generate():
     possible_replies = [
         "Uhhhh...", "...", "Ye",
         "¯\_(ツ)_/¯", "🤷", "🏀",
         "I dunno", "Errrr", "Indecisive",
-        "I can't think right now, can you give me a minute?",
+        "Brain hurt. Don't ask hard question",
         "Magic 8 ball can you help me with this one?",
         "*screeching noises*", "Hey do you wanna go play basketball instead?",
         "https://tenor.com/bgNGq.gif", # Soup gif
