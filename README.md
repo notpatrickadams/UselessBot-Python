@@ -1,6 +1,6 @@
 # UselessBot
 
-A useless Discord bot that generates pictures of bees!
+A useless Discord bot!
 
 ## Installing & Running
 
@@ -12,20 +12,16 @@ There will be a log at `bot.log`
 
 ## Commands
 
-- !bee
+- /bee
   - Sends a really good drawing of a bee with random colors!
-- !pokemon
-  - Sends a random Pokemon in chat with types, flavor text, and the Dex number
-  - 1/128 chance that the image of the Pokemon will be in shiny form
 - The mention of the word "lamp"
   - Sends an image of a moth
     - Because moths love light sources
-- !magic7
-  - Gives not very good or inconclusive advice
+- /magic7
+  - Gives not very good advice
+- /idea
+  - Takes a good idea from itsthisforthat.com
 
 ## To-Do
 
-- Convert `!` commands to `/` commands with `discord-py-interactions`
-- Make Pokemon with different forms display better
-  - Currently it shows `name-form`
-  - Solution: Add field for form if form is anything other than the default form 
+- Think of more useless things to add
