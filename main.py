@@ -7,6 +7,7 @@ from discord_slash import SlashCommand
 
 from functions.bee import generate_random
 from functions.magic7 import magic7_generate
+from functions.idea_generator import idea_generator
 
 bot = Bot(command_prefix="!", self_bot=True, help_command=None, intents=Intents.default())
 slash = SlashCommand(bot, sync_commands=True)
@@ -30,6 +31,11 @@ async def bee(ctx):
 async def magic7(ctx, inquiry):
     logging.info(f"Providing life advice to { ctx.author } with question: { inquiry }")
     await ctx.send(f"You asked: { inquiry }\nA: " + magic7_generate())
+
+@slash.slash(description="Generate a random startup idea!")
+async def idea(ctx):
+    logging.info(f"Random idea requested by { ctx.author }")
+    await ctx.send(idea_generator())
 
 @bot.event
 async def on_message(message):
