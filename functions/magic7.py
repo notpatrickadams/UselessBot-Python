@@ -11,7 +11,7 @@ def magic7_generate():
         "https://tenor.com/bgNGq.gif", # Soup gif
         "https://tenor.com/bCL4U.gif", # Cat chair spinning gif
         "Джордж Констанс", # George Costanza in Ukrainian
-        "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fi1.kym-cdn.com%2Fphotos%2Fimages%2Foriginal%2F000%2F131%2F686%2Fimmahitu.jpg" # George Costanza picture
+        "http://i1.kym-cdn.com/photos/images/original/000/131/686/immahitu.jpg" # George Costanza picture
     ]
 
     return possible_replies[randint(0, len(possible_replies))]
