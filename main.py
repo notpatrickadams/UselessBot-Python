@@ -37,6 +37,11 @@ async def idea(ctx):
     logging.info(f"Random idea requested by { ctx.author }")
     await ctx.send(idea_generator())
 
+@slash.slash(description="The bot will mention you")
+async def hi(ctx):
+    logging.info(f"Mentioning { ctx.author }")
+    await ctx.send(f"Hi { ctx.author.mention }")
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
