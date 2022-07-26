@@ -8,6 +8,7 @@ from discord_slash import SlashCommand
 from functions.bee import generate_random
 from functions.magic7 import magic7_generate
 from functions.idea_generator import idea_generator
+from functions.rice_price import rice_price
 
 bot = Bot(command_prefix="!", self_bot=True, help_command=None, intents=Intents.default())
 slash = SlashCommand(bot, sync_commands=True)
@@ -41,6 +42,11 @@ async def idea(ctx):
 async def hi(ctx):
     logging.info(f"Mentioning { ctx.author }")
     await ctx.send(f"Hi { ctx.author.mention }")
+
+@slash.slash(description="Gets the last price of rice per pound")
+async def rice(ctx):
+    logging.info(f"{ ctx.author } is requesting the price of rice")
+    await ctx.send(f"The price of rice is ${ rice_price() / 100 } USD per pound")
 
 @bot.event
 async def on_message(message):
