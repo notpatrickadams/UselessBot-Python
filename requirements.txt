@@ -1,5 +1,5 @@
-discord.py
 Pillow
 python-dotenv
 requests
-discord-py-slash-command
+discord-py-interactions
+interactions-files

@@ -37,7 +37,7 @@ def generate_random():
         with BytesIO() as image_binary:
             img.save(image_binary, "PNG")
             image_binary.seek(0)
-            with open("temp.png", "wb") as t:
-                t.write(image_binary.read())
-
-            return "temp.png"
+            #with open("temp.png", "wb") as t:
+            #    t.write(image_binary.read())
+            #    return t
+            return image_binary.read()
