@@ -55,5 +55,8 @@ async def on_message(message):
     elif "lamp" in message.content.lower():
         logging.info(f"Sent moth image to { message.author.mention }")
         await message.channel.send("Moth summoned.", file=File(fp="moth.jpg"))
-
+    elif "sus" in message.content.lower():
+        logging.info(f"Reacting with :sus: on message by { message.author.mention }")
+        await message.add_reaction(r"<:sus:1011595741631885342>")
+        
 bot.run(os.getenv("DISCORD_TOKEN"))
