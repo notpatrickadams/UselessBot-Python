@@ -52,7 +52,15 @@ async def hi(ctx: interactions.CommandContext):
 @bot.command(name="rice", description="Gets the last price of rice per pound")
 async def rice(ctx: interactions.CommandContext):
     logging.info(f"{ ctx.author } is requesting the price of rice")
-    await ctx.send(f"The price of rice is ${ rice_price() / 100 } USD per pound")
+    try:
+        rice = await rice_price()
+        if rice != 0:
+            await ctx.send(f"The price of rice is ${ rice / 100 } USD per pound")
+        else:
+            await ctx.send("Rice is not available at the moment.", ephemeral=True)
+    except Exception as e:
+        logging.info(e)
+        await ctx.send("Broken whoops", ephemeral=True)
 
 @bot.event
 async def on_message_create(message: interactions.Message):
@@ -64,5 +72,5 @@ async def on_message_create(message: interactions.Message):
     elif "sus" in message.content.lower():
         logging.info(f"Reacting with :sus: on message by { message.author.mention }")
         await message.create_reaction(r":sus:1011595741631885342")
-        
+
 bot.start()
