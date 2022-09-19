@@ -1,4 +1,4 @@
-import os, logging
+import os, logging, json
 from dotenv import load_dotenv
 
 import interactions
@@ -14,6 +14,25 @@ logging.basicConfig(filename="bot.log", format="%(asctime)s - %(message)s", leve
 
 bot = interactions.Client(token=os.getenv("DISCORD_TOKEN"), intents=interactions.Intents.DEFAULT | interactions.Intents.GUILD_MESSAGE_CONTENT)
 bot.load("interactions.ext.files")
+
+# Loads IDs of clowns
+try:
+    with open("config/clowns.json") as f:
+        CLOWNS = json.loads(f.read())["ids"]
+except FileNotFoundError:
+    logging.info("No clowns found... Creating them...")
+    if not os.path.exists("config/"):
+        os.mkdir("config/")
+    with open("config/clowns.json", "w") as f:
+        f.write(
+            """
+            {
+                "ids": [
+                    "INSERT CLOWNS AS A STRING HERE"
+                ]
+            }
+            """
+        )
 
 @bot.event
 async def on_ready():
@@ -72,5 +91,8 @@ async def on_message_create(message: interactions.Message):
     elif "sus" in message.content.lower():
         logging.info(f"Reacting with :sus: on message by { message.author.mention }")
         await message.create_reaction(r":sus:1011595741631885342")
+    elif message.author.mention[2:-1] in CLOWNS:
+        logging.info(f"Reacting with clown")
+        await message.create_reaction(r"🤡")
 
 bot.start()

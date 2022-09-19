@@ -5,3 +5,4 @@ __pycache__/
 *firebase*.json
 url.txt
 temp.png
+config/*
