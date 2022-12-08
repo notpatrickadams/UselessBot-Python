@@ -8,6 +8,7 @@ from functions.bee import generate_random
 from functions.magic7 import magic7_generate
 from functions.idea_generator import idea_generator
 from functions.rice_price import rice_price
+from functions.urban_dictionary import urban_dictionary
 
 load_dotenv()
 logging.basicConfig(filename="bot.log", format="%(asctime)s - %(message)s", level=logging.INFO)
@@ -52,7 +53,8 @@ async def bee(ctx: interactions.CommandContext):
             name="inquiry", 
             description="What you want to ask the Magic 7 Ball", 
             type=interactions.OptionType.STRING,
-            required=True)
+            required=True
+        )
     ])
 async def magic7(ctx: interactions.CommandContext, inquiry: str):
     logging.info(f"Providing life advice to { ctx.author } with question: { inquiry }")
@@ -80,6 +82,25 @@ async def rice(ctx: interactions.CommandContext):
     except Exception as e:
         logging.info(e)
         await ctx.send("Broken whoops", ephemeral=True)
+
+@bot.command(name="ud", description="Gets the definition of a term on Urban Dictionary", options=[
+        interactions.Option(
+            name="term",
+            description="Term to search on Urban Dictionary",
+            type=interactions.OptionType.STRING,
+            required=True
+        )
+    ])
+async def ud(ctx: interactions.CommandContext, term: str):
+    logging.info(f"{ ctx.author } looked up { term }")
+    try:
+        res = await urban_dictionary(term)
+        first_res = res[0]
+        embed = interactions.Embed(title=first_res['word'].capitalize(), url=first_res['permalink'])
+        embed.add_field("Definition", first_res["definition"])
+        await ctx.send(embeds=embed)
+    except Exception as e:
+        logging.error(e)
 
 @bot.event
 async def on_message_create(message: interactions.Message):
