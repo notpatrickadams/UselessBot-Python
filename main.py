@@ -97,6 +97,8 @@ async def ud(ctx: interactions.CommandContext, term: str):
         res = await urban_dictionary(term)
         first_res = res[0]
         embed = interactions.Embed(title=first_res['word'].capitalize(), url=first_res['permalink'])
+        if len(first_res["definition"]) > 1000:
+            first_res["definition"] = first_res["definition"][:1000] + "..."
         embed.add_field("Definition", first_res["definition"])
         await ctx.send(embeds=embed)
     except Exception as e:
