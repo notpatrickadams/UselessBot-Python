@@ -95,6 +95,9 @@ async def ud(ctx: interactions.CommandContext, term: str):
     logging.info(f"{ ctx.author } looked up { term }")
     try:
         res = await urban_dictionary(term)
+        if len(res) == 0:
+            await ctx.send(f"""Couldn't find "{ term }" on Urban Dictionary""", ephemeral=True)
+            return
         first_res = res[0]
         embed = interactions.Embed(title=first_res['word'].capitalize(), url=first_res['permalink'])
         if len(first_res["definition"]) > 1000:
